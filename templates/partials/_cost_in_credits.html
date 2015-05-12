@@ -1,8 +1,10 @@
+{% load staticfiles %}
+
 {% if product.cost_in_credits == 'unknown' %}
     Talk to sales
 {% else %}
     {{ product.cost_in_credits }} 
     <span class="credits">
-        <img src="{{ static 'img/credits.svg' }}">
+        <img src="{% static 'img/credits.svg' %}">
     </span>
 {% endif %}

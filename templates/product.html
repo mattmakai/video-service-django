@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <h1>{{ product.name }}</h1>
@@ -16,5 +17,5 @@
 {% endblock %}
 
 {% block js_body %}
-    <script src="{{ static 'js/product.js' }}"></script>
+    <script src="{% static 'js/product.js' %}"></script>
 {% endblock %}

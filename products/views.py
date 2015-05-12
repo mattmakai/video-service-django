@@ -1,6 +1,8 @@
 import requests
 from django.shortcuts import render
 
+from .models import SupportTicket
+
 
 # List endpoint for the starwars ship API
 SWAPI = 'http://swapi.co/api/starships'
@@ -15,14 +17,15 @@ def index(request):
 
 
 def product(request):
-    swapi_ship_url = request.args.get('url', '')
+    swapi_ship_url = request.GET.get('url', '')
     results = requests.get(swapi_ship_url)
     return render(request, 'product.html', {'product': results.json()})
 
 
-def tickets(requests):
-    pass
+def tickets(request):
+    tickets = SupportTicket.objects.all()
+    return render(request, 'tickets.html', {'tickets': tickets})
 
 
-def ticket(requests):
+def ticket(request):
     pass

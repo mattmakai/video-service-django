@@ -13,3 +13,4 @@ deploy/ssh_keys/
 deploy/ssl_cert/
 .env
 db.sqlite3
+products/migrations/*
