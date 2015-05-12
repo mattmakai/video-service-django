@@ -1,5 +1,28 @@
+import requests
 from django.shortcuts import render
 
 
+# List endpoint for the starwars ship API
+SWAPI = 'http://swapi.co/api/starships'
+
+
 def index(request):
-    return render(request, 'index.html', {})
+    resp = requests.get(SWAPI)
+    if resp.status_code is not 200:
+        return render_template('500.html')
+    products = resp.json()
+    return render(request, 'index.html', {'products': products['results']})
+
+
+def product(request):
+    swapi_ship_url = request.args.get('url', '')
+    results = requests.get(swapi_ship_url)
+    return render(request, 'product.html', {'product': results.json()})
+
+
+def tickets(requests):
+    pass
+
+
+def ticket(requests):
+    pass

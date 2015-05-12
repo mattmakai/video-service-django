@@ -21,5 +21,5 @@ from products import urls as product_urls
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^landing/$', TemplateView.as_view(template_name="landing.html")),
-    url(r'^$', include(product_urls)),
+    url(r'^$', include(product_urls, namespace="products")),
 ]
